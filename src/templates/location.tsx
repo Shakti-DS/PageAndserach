@@ -53,7 +53,7 @@ import {
 } from "@yext/pages/components";
 import FeaturesBrand from "../components/locationDetail/FeaturesBrand";
 import { Fade, Slide } from "react-awesome-reveal";
-import MgmTimber from "../components/locationDetail/MgmTimber";
+import Mgm from "../components/locationDetail/Mgm";
 import { AnswerExperienceConfig } from "../config/answersHeadlessConfig";
 
 /**
@@ -138,7 +138,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   return {
     title: document.c_meta_title
       ? document.c_meta_title
-      : `${document.name} Store of MGM Timber`,
+      : `${document.name} Store of MGM `,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
@@ -149,7 +149,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-              : `Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
+            : `Find the ${document.name}  Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
@@ -189,7 +189,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-              : `Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
+            : `Find the ${document.name}  Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
@@ -227,7 +227,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           name: "twitter:title",
           content: document.c_meta_title
             ? document.c_meta_title
-            : `${document.name} Store of MGM Timber`,
+            : `${document.name} Store of MGM `,
         },
       },
       {
@@ -237,7 +237,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-              : `Find the ${document.name} Timber Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
+            : `Find the ${document.name}  Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
