@@ -158,7 +158,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-              : `Find MGM Timber Store in ${document.name}. We stock high-quality, robust products at competitive rates.`
+            : `Find Coffe Store in ${document.name}. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
@@ -201,7 +201,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-              : `Find MGM Timber Store in ${document.name}. We stock high-quality, robust products at competitive rates.`
+            : `Find MGM Coffe Store in ${document.name}. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },

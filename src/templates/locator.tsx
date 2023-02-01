@@ -75,7 +75,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
     title: `${
       document.c_meta_title
         ? document.c_meta_title
-        : `Timber Merchants Near Me - Find MGM Timber Branch Locator Here.`
+      : `Coffe Merchants Near Me - Find MGM Coffe Branch Locator Here.`
     }`,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
@@ -87,7 +87,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-              : `View Timber Merchants near you today at MGM Timber. We stock high-quality, robust products at competitive rates.`
+            : `View Coffe Merchants near you today at  Coffe. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
@@ -132,7 +132,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-              : `View Timber Merchants near you today at MGM Timber. We stock high-quality, robust products at competitive rates.`
+            : `View Coffe Merchants near you today at Coffe. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
@@ -143,7 +143,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_title
               ? document.c_meta_title
-              : `Timber Merchants Near Me - Find MGM Timber Branch Locator Here.`
+            : `Coffe Merchants Near Me - Find Coffe Branch Locator Here.`
           }`,
         },
       },
@@ -168,7 +168,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-              : `View Timber Merchants near you today at MGM Timber. We stock high-quality, robust products at competitive rates.`
+            : `View Coffe Merchants near you today at Coffe. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
@@ -179,7 +179,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_title
               ? document.c_meta_title
-              : `Timber Merchants Near Me - Find MGM Timber Branch Locator Here.`
+            : `Coffe Merchants Near Me - Find MGM Coffe Branch Locator Here.`
           }`,
         },
       },
