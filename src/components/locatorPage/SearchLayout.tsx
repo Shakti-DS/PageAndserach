@@ -280,11 +280,11 @@ const loading = useSearchState(s=>s.searchStatus.isLoading);
                   fieldApiName: "address.city",
 
                 },
-                {
-                  entityType: "location",
-                  fieldApiName: "address.region",
+                // {
+                //   entityType: "location",
+                //   fieldApiName: "address.region",
 
-                  },
+                //   },
                   // {
                   //   entityType: "location",
                   //   fieldApiName: "address.countryCode",
