@@ -7,18 +7,17 @@ type Props = {
   title?: string;
   _site?: any;
   global: any;
-  imge: any;
   children?: React.ReactNode;
 };
 
-const PageLayout = ({ title, imge,_site, global, children }: Props) => {
+const PageLayout = ({ title ,_site, global, children }: Props) => {
   return (
     <>
       <Nav
         c_logos={global?.c_logo.image?.url}
         c_menus={global?.c_menu}
       />
-      <BannerSlide imageSlider={imge} />
+     
       {children}
       <Footer
         c_aboutsa={global?.c_abouts}

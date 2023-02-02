@@ -56,6 +56,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 import Mgm from "../components/locationDetail/Mgm";
 import { AnswerExperienceConfig } from "../config/answersHeadlessConfig";
 import Service from "../components/locationDetail/Services";
+import BannerSlide from "../components/locationDetail/BannerSlide";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -442,7 +443,8 @@ const Location: Template<ExternalApiRenderData> = ({
       >
         {" "}
         <AnalyticsScopeProvider name={""}>
-          <PageLayout global={_site} imge={c_slideImage}>
+          <PageLayout global={_site} >
+            <BannerSlide imge={c_slideImage} />
             <div className="container">
               <div className="banner-text banner-dark-bg justify-center text-center">
                 <h1 className="">
