@@ -55,6 +55,7 @@ import FeaturesBrand from "../components/locationDetail/FeaturesBrand";
 import { Fade, Slide } from "react-awesome-reveal";
 import Mgm from "../components/locationDetail/Mgm";
 import { AnswerExperienceConfig } from "../config/answersHeadlessConfig";
+import Service from "../components/locationDetail/Services";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -77,6 +78,13 @@ export const config: TemplateConfig = {
       "yextDisplayCoordinate",
       "displayCoordinate",
       "cityCoordinate",
+      "c_faqs.question",
+      "c_faqs.answer",
+      "c_aboutimg",
+      "c_discription",
+      "c_ctaButtons",
+      "c_serviceList",
+      "c_slideImage"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -89,47 +97,12 @@ export const config: TemplateConfig = {
     },
   },
 };
-
-/**
- * Defines the path that the generated file will live at for production.
- *
- * NOTE: This currently has no impact on the local dev path. Local dev urls currently
- * take on the form: featureName/entityId
- */
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
-  // var url = "";
-  // var name: any = document.name.toLowerCase();
-  // var string: any = name.toString();;
-  // let result: any = string.replaceAll(" ", "-");
-  // document.dm_directoryParents.map((result: any, i: Number) => {
-  //   if (i > 0) {
-  //     url += result.slug + "/"
-  //   }
-  // })
-  // if (!document.slug) {
-  //   url += `${result}.html`;
-  // } else {
-  //   url += `${document.slug.toString()}.html`;
-  // }
-
   return document.id;
 };
-/**
- * Defines a list of paths which will redirect to the path created by getPath.
- *
- * NOTE: This currently has no impact on the local dev path. Redirects will be setup on
- * a new deploy.
- */
 export const getRedirects: GetRedirects<TemplateProps> = ({ document }) => {
   return [`index-old/${document.id}`];
 };
-
-/**
- * This allows the user to define a function which will take in their template
- * data and procude a HeadConfig object. When the site is generated, the HeadConfig
- * will be used to generate the inner contents of the HTML document's <head> tag.
- * This can include the title, meta tags, script tags, etc.
- */
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   relativePrefixToRoot,
   path,
@@ -149,7 +122,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-            : `Find the ${document.name}  Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
+              : `Find the ${document.name}  Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
@@ -189,7 +162,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-            : `Find the ${document.name}  Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
+              : `Find the ${document.name}  Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
@@ -237,7 +210,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           content: `${
             document.c_meta_description
               ? document.c_meta_description
-            : `Find the ${document.name}  Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
+              : `Find the ${document.name}  Store in ${document.address.city}. We stock high-quality, robust products at competitive rates.`
           }`,
         },
       },
@@ -294,8 +267,15 @@ const Location: Template<ExternalApiRenderData> = ({
     displayCoordinate,
     cityCoordinate,
     name,
+    c_faqs,
+    c_aboutimg,
+    c_ctaButtons,
+    c_discription,
+    c_serviceList,
+    c_slideImage
   } = document;
 
+  console.log('c_aboutimg', c_aboutimg)
   // console.log('_site', _site)
 
   let templateData = { document: document, __meta: __meta };
@@ -462,7 +442,7 @@ const Location: Template<ExternalApiRenderData> = ({
       >
         {" "}
         <AnalyticsScopeProvider name={""}>
-          <PageLayout global={_site}>
+          <PageLayout global={_site} imge={c_slideImage}>
             <div className="container">
               <div className="banner-text banner-dark-bg justify-center text-center">
                 <h1 className="">
@@ -529,6 +509,22 @@ const Location: Template<ExternalApiRenderData> = ({
                   )}
                 </div>
               </div>
+            </div>
+            <div>
+              <Service
+              serviceLis={c_serviceList}
+              />
+            </div>
+            <div className="">
+              <Faq faqs={c_faqs} />
+            </div>
+
+            <div>
+              <About
+               img= {c_aboutimg}
+              btn ={c_ctaButtons}
+             dsc= {c_discription}
+              />
             </div>
           </PageLayout>
         </AnalyticsScopeProvider>
