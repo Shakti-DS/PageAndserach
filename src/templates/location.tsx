@@ -495,6 +495,18 @@ const Location: Template<ExternalApiRenderData> = ({
                 </div>
               )}
             </div>
+            <div>
+              <About img={c_aboutimg} btn={c_ctaButtons} dsc={c_discription} />
+            </div>
+         
+            <div>
+              <Service serviceLis={c_serviceList} />
+            </div>
+            <div className="">
+              <Faq faqs={c_faqs} />
+            </div>
+
+            
 
             <div className="nearby-sec">
               <div className="container">
@@ -503,24 +515,14 @@ const Location: Template<ExternalApiRenderData> = ({
                 </div>
                 <div className="nearby-sec-inner">
                   {yextDisplayCoordinate ||
-                  cityCoordinate ||
-                  displayCoordinate ? (
+                    cityCoordinate ||
+                    displayCoordinate ? (
                     <Nearby externalApiData={externalApiData} />
                   ) : (
                     ""
                   )}
                 </div>
               </div>
-            </div>
-            <div>
-              <Service serviceLis={c_serviceList} />
-            </div>
-            <div className="">
-              <Faq faqs={c_faqs} />
-            </div>
-
-            <div>
-              <About img={c_aboutimg} btn={c_ctaButtons} dsc={c_discription} />
             </div>
           </PageLayout>
         </AnalyticsScopeProvider>

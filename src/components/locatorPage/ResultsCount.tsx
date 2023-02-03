@@ -30,9 +30,9 @@ export interface ResultsCountConfig {
 
 
 export default function ResultsCount(props: Props) {
-  const resultsCount = useSearchState(state => state.vertical?.resultsCount) || 0;
-  const resultsLength = useSearchState(state => state.vertical?.results?.length) || 0;
-  const offset = useSearchState(state => state.vertical?.offset) || 0;
+  const resultsCount = useSearchState(state => state?.vertical?.resultsCount) || 0;
+  const resultsLength = useSearchState(state => state?.vertical?.results?.length) || 0;
+  const offset = useSearchState(state => state?.vertical?.offset) || 0;
   
   return <ResultsCountDisplay resultsCount={resultsCount} resultsLength={resultsLength} offset={offset} {...props}/>;
 }

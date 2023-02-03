@@ -28,9 +28,7 @@ const BreadCrumbs = (props: data) => {
            
        if (parents[i].meta.entityType.id == "ce_country") {
           // parents[i].name = regionNames.of(parents[i].name);
- 
           parents[i].slug = parents[i].slug;
-          
           data.push({
             name: regionNames.of(parents[i].name),
             slug: parents[i].slug,
@@ -39,13 +37,11 @@ const BreadCrumbs = (props: data) => {
 
         } 
         else if (parents[i].meta.entityType.id == "ce_region") {
-      
           data.push({ name: parents[i].name, slug:`${parents[i-1].slug}/${parents[i].slug}`, 
           count:parents[i].dm_directoryChildrenCount});
           parents[i].name = parents[i].name;
           parents[i].slug = `${parents[i-1].slug}/${parents[i].slug}`;
         } else if (parents[i].meta.entityType.id == "ce_city") {
-       
           parents[i].name = parents[i].name;
           parents[i].slug = `${parents[i - 1].slug}/${parents[i].slug}`;
           data.push({
@@ -91,9 +87,6 @@ const BreadCrumbs = (props: data) => {
             <div dangerouslySetInnerHTML={{__html: breadcrumbhome}}/>
             </Link>
           </li>
-          {/* <li>
-            <a href="https://main-sushi--issue--quotation-sbx-pgsdemo-com.sbx.preview.pagescdn.com/">Store Locator</a>
-          </li> */}
           {list ? (
             list
           ) : (

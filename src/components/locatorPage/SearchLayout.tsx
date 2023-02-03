@@ -27,7 +27,7 @@ import { Link } from "@mui/material";
 import { AnswerExperienceConfig } from "../../config/answersHeadlessConfig";
 
 var params1: any = { latitude: center_latitude, longitude:center_longitude }
-var mapzoom = 8;
+var mapzoom = 3;
 var centerLatitude = center_latitude;
 var centerLongitude = center_longitude;
 const SearchLayout = (props: any): JSX.Element => {
@@ -68,7 +68,7 @@ const loading = useSearchState(s=>s.searchStatus.isLoading);
           };
           params1 = params;
           SetNewparam(params1);
-          mapzoom = 3;
+          mapzoom = 8;
           searchActions.setUserLocation(params1);
           searchActions.setVerticalLimit(AnswerExperienceConfig.limit);
           searchActions.executeVerticalQuery();
@@ -201,7 +201,6 @@ const loading = useSearchState(s=>s.searchStatus.isLoading);
     }
     },[locationinbuit])
     useEffect(()=>{
-      // console.log("yes rerender")
       locationResults.map((result:any, index:number) => {
         const resultelement = document.querySelectorAll(
           `.result-list-inner-${index + 1}`
@@ -223,8 +222,6 @@ const loading = useSearchState(s=>s.searchStatus.isLoading);
 
   return (
     <>
-
-      
       <div className="breadcrumb">
         <div className="container-custom">
           <ul>

@@ -1,16 +1,5 @@
 import * as React from "react";
 import "../../index.css";
-import logofooter from "../../images/logo-footer.svg";
-import facebook from "../../images/facebook.svg";
-import instagram from "../../images/instagram.svg";
-import twitter from "../../images/twitter.svg";
-import youtube from "../../images/youtube.svg";
-import printest from "../../images/printest.svg";
-import { cookieText, cookiesUrl } from "../../../sites-global/global";
-import CookieConsent from "react-cookie-consent";
-import { StaticData } from "../../../sites-global/staticData";
-import { useEffect, useState } from "react";
-import Link from "../commons/Link";
 
 type props = {
   c_aboutsa: any;
@@ -50,6 +39,7 @@ const Footer = (props: any) => {
     <>
       <footer className="footer-1 bg-light-grey-100 py-8 sm:py-12">
         <div className="container mx-auto px-4">
+          <img src="" alt="" />
           <div className="sm:flex sm:flex-wrap sm:-mx-4 md:py-4 justify-center">
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
               {c_aboutsa?.map((about: any) => {

@@ -24,8 +24,8 @@ const AccordionItem = (props: props) => {
       {propsFaq.map((faqData: any , index: number) => {
         return (
           <Fragment>
-            <Accordion open={open === index}>
-              <AccordionHeader onClick={() => handleOpen(index)}>
+            <Accordion open={open === index +1}>
+              <AccordionHeader onClick={() => handleOpen(index + 1)}>
                 {faqData?.question}
               </AccordionHeader>
               <AccordionBody>{faqData?.answer}</AccordionBody>
