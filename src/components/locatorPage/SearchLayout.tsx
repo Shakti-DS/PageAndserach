@@ -224,7 +224,7 @@ const loading = useSearchState(s=>s.searchStatus.isLoading);
   return (
     <>
 
-      {/* {loader} */}
+      
       <div className="breadcrumb">
         <div className="container-custom">
           <ul>
@@ -236,7 +236,7 @@ const loading = useSearchState(s=>s.searchStatus.isLoading);
 
         </div>
       </div>
-      <div className="locator-main">
+      <div className="locator-main bg-light-grey">
         {allowlocation.length > 0 ?
           <div className="for-allow">{allowlocation}</div>
           : ''}

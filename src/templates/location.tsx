@@ -85,7 +85,7 @@ export const config: TemplateConfig = {
       "c_discription",
       "c_ctaButtons",
       "c_serviceList",
-      "c_slideImage"
+      "c_slideImage",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -273,7 +273,7 @@ const Location: Template<ExternalApiRenderData> = ({
     c_ctaButtons,
     c_discription,
     c_serviceList,
-    c_slideImage
+    c_slideImage,
   } = document;
 
   // console.log('c_aboutimg', c_aboutimg)
@@ -317,8 +317,8 @@ const Location: Template<ExternalApiRenderData> = ({
     }
   }
   document.dm_directoryParents &&
-    document.dm_directoryParents.map((i: any, index: any) => {
-      if (i.meta.entityType.id == "ce_country") {
+    document?.dm_directoryParents?.map((i: any, index: any) => {
+      if (i?.meta?.entityType?.id == "ce_country") {
         document.dm_directoryParents[index].name =
           document.dm_directoryParents[index].name;
         document.dm_directoryParents[index].slug =
@@ -443,7 +443,7 @@ const Location: Template<ExternalApiRenderData> = ({
       >
         {" "}
         <AnalyticsScopeProvider name={""}>
-          <PageLayout global={_site} >
+          <PageLayout global={_site}>
             <BannerSlide imge={c_slideImage} />
             <div className="container">
               <div className="banner-text banner-dark-bg justify-center text-center">
@@ -513,20 +513,14 @@ const Location: Template<ExternalApiRenderData> = ({
               </div>
             </div>
             <div>
-              <Service
-              serviceLis={c_serviceList}
-              />
+              <Service serviceLis={c_serviceList} />
             </div>
             <div className="">
               <Faq faqs={c_faqs} />
             </div>
 
             <div>
-              <About
-               img= {c_aboutimg}
-              btn ={c_ctaButtons}
-             dsc= {c_discription}
-              />
+              <About img={c_aboutimg} btn={c_ctaButtons} dsc={c_discription} />
             </div>
           </PageLayout>
         </AnalyticsScopeProvider>
