@@ -6,7 +6,7 @@ import AccordionItem from "./AccordianItem";
 import { StaticData } from "../../../sites-global/staticData";
 
 export default function Faq(props: any) {
-  console.log(props,"props.c_fAQsHeading")
+  // console.log(props,"props.c_fAQsHeading")
   const [current, setCurrent] = useState("");
   const [isShow, setIsShow] = useState(false);
   const [faqId, setFaqId] = useState(null);

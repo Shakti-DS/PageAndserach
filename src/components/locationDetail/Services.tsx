@@ -14,7 +14,7 @@ export default function Service(props: any) {
       <div className="container">
         <div className="servicesList service-mid flex flex-wrap gap-y-5">
           {serviceLis.map((Data: any) => (
-            <div className="block-content flex w-1/4">
+            <div className="block-content flex w-1/4 gap-2">
               <svg
                 className="check-icon w-4"
                 xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ export default function Service(props: any) {
                   fillRule="evenodd"
                 />
               </svg>
-              {Data}
+              <span className="text-lg">{Data}</span> 
             </div>
           ))}
         </div>

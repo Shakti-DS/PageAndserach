@@ -13,9 +13,7 @@ type props = {
 
 export default function About(props: any) {
   const { img, btn, dsc } = props;
-  console.log("img===>", img);
-  console.log("btn", btn);
-  console.log("dsc", dsc);
+  
 
   function convertToRtf(rtf: any) {
     rtf = rtf?.replace(/\\par[d]?/g, "");

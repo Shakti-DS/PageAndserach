@@ -276,7 +276,7 @@ const Location: Template<ExternalApiRenderData> = ({
     c_slideImage
   } = document;
 
-  console.log('c_aboutimg', c_aboutimg)
+  // console.log('c_aboutimg', c_aboutimg)
   // console.log('_site', _site)
 
   let templateData = { document: document, __meta: __meta };
