@@ -387,7 +387,9 @@ nav[aria-label="Pagination"] button:disabled{@apply cursor-not-allowed text-opac
 .about-inner-sec .splide__track{  @apply lg:h-full}
 .about-inner-sec .splide__slide img{ @apply lg:h-full lg:object-cover transition-all duration-300}
 .about-inner-sec .splide__slide img:hover{@apply transform scale-105}
-.splide__slide img{  @apply w-full}
+.splide__slide img{  @apply w-full  h-80 object-cover}
+
+
 .splide{  @apply w-full}
 .offerBanner{  @apply w-full pb-7 md:pb-10}
 .offerBanner img{  @apply w-full shadow-2xl}

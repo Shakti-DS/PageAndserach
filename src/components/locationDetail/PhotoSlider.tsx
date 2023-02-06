@@ -12,7 +12,7 @@ const PhotoSlider = (props: any) => {
   ));
   return (
     <>
-	  <Splide aria-label="Photo Slider">
+      <Splide aria-label="Photo Slider" className="splide__slide img">
           {photos}
       </Splide>
     </>

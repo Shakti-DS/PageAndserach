@@ -23,6 +23,7 @@ import VerticalResults from "../VerticalResults";
 import ResultsCount from "./ResultsCount";
 import useFetchResults from "../../hooks/useFetchResults";
 import { AnswerExperienceConfig } from "../../config/answersHeadlessConfig";
+import Loader from "./utils/Loader";
 
 var params1: any = { latitude: center_latitude, longitude: center_longitude };
 var mapzoom = 3;
@@ -93,7 +94,7 @@ const SearchLayout = (props: any): JSX.Element => {
     }, 3100);
   };
   const onClick = () => {
-    if (navigator.geolocation) {
+    if (navigator?.geolocation) {
       const error = (error: any) => {
         if (error.code == 1) {
           setallowLocation("Please allow your Location");
@@ -105,14 +106,14 @@ const SearchLayout = (props: any): JSX.Element => {
           Geocode.setApiKey(googleApikey);
           var inputformat = "";
           Geocode.fromLatLng(
-            position.coords.latitude,
-            position.coords.longitude
+            position?.coords?.latitude,
+            position?.coords?.longitude
           ).then(
             (response: any) => {
               if (response.results[0]) {
-                filterRef.current &&
-                  filterRef.current.setInputValue(
-                    response.results[0].formatted_address
+                filterRef?.current &&
+                  filterRef?.current?.setInputValue(
+                    response?.results[0]?.formatted_address
                   );
                 setallowLocation("");
               }
@@ -186,8 +187,7 @@ const SearchLayout = (props: any): JSX.Element => {
       ? props._site.c_locatorBannerImage.image.url
       : "";
 
-  // const loader =
-  //   isLoading ? <LoadingSpinner /> : '';
+  const loader = isLoading ? <Loader /> : "";
 
   const addClass = () => {
     document.body.setAttribute("class", "mapView");
@@ -213,7 +213,7 @@ const SearchLayout = (props: any): JSX.Element => {
         }
       }
     });
-  }, [loading]);
+  }, [loader]);
   useEffect(() => {
     if (firstTimeRunners) {
       firstTimeRunners = false;
@@ -224,170 +224,172 @@ const SearchLayout = (props: any): JSX.Element => {
 
   return (
     <>
-      <div className="breadcrumb">
-        <div className="container-custom">
-          <ul>
-            <li>
-              <a href="#" className="home">
-                {" "}
-                Home
-              </a>
-            </li>
-            <li>{StaticData.locator_breadcrumb}</li>
-          </ul>
-        </div>
-      </div>
-      <div className="locator-main bg-light-grey">
-        {allowlocation.length > 0 ? (
-          <div className="for-allow">{allowlocation}</div>
-        ) : (
-          ""
-        )}
-        <div className="search-bx">
-          <div className="location-with-filter">
-            <h1 className="">{StaticData.FindLocationtext}</h1>
-          </div>
-
-          <div className="search-field">
-            <FilterSearch
-              ref={filterRef}
-              displaymsg={displaymsg}
-              setDisplaymsg={setDisplaymsg}
-              customCssClasses={{
-                filterSearchContainer: "m-2 w-full",
-                inputElement: "FilterSearchInput pr-[90px]",
-                optionsContainer: "options",
-              }}
-              inputvalue={inputvalue}
-              setSearchInputValue={setInputValue}
-              params={params1}
-              searchOnSelect={true}
-              searchFields={[
-                {
-                  entityType: "location",
-                  fieldApiName: "address.line1",
-                },
-                {
-                  entityType: "location",
-                  fieldApiName: "address.postalCode",
-                },
-                {
-                  entityType: "location",
-                  fieldApiName: "name",
-                },
-                {
-                  entityType: "location",
-                  fieldApiName: "address.city",
-                },
-              ]}
-              handleInputValue={handleInputValue}
-              handleSetUserShareLocation={handleSetUserShareLocation}
-            />
-
-            <button
-              className="search-btn"
-              aria-label="Search bar icon"
-              id="search-location-button"
-              onClick={Findinput}
-            >
-              <span dangerouslySetInnerHTML={{ __html: search_icn }} />
-            </button>
-          </div>
-
-          <div className="fliter-sec">
-            <button
-              className="useMyLocation"
-              title="Search using your current location!"
-              id="useLocation"
-              onClick={onClick}
-            >
-              <span
-                className="icon"
-                dangerouslySetInnerHTML={{ __html: UseMylocationsvg }}
-              />
-
-              <span className="underline hover:no-underline">
-                {" "}
-                {StaticData.Usemylocation}
-              </span>
-            </button>
-
-            <ResultsCount
-              customCssClasses={{ container: "mx-2 my-0 text-dark-gray" }}
-            />
+      <div className="">
+        <div className="breadcrumb">
+          <div className="container-custom">
+            <ul>
+              <li>
+                <a href="#" className="home">
+                  {" "}
+                  Home
+                </a>
+              </li>
+              <li>{StaticData?.locator_breadcrumb}</li>
+            </ul>
           </div>
         </div>
-        <div className="mobile-btns">
-          <div className="button-bx">
-            <a
-              className="btn listBtn"
-              href="javascript:void(0);"
-              onClick={() => {
-                document.body.classList.remove("mapView");
-              }}
-            >
-              {" "}
-              List View
-            </a>
-            <a
-              className="btn mapBtn"
-              href="javascript:void(0);"
-              onClick={addClass}
-            >
-              {" "}
-              Map View
-            </a>
-          </div>
-        </div>
-        <div className=" map-section ">
-          <GoogleMaps
-            apiKey={googleApikey}
-            centerLatitude={centerLatitude}
-            centerLongitude={centerLongitude}
-            check={true}
-            defaultZoom={mapzoom}
-            showEmptyMap={true}
-          />
-        </div>
-
-        <div className="left-listing">
-          <PerfectScrollbar>
-            <div>
-              <VerticalResults
-                displayAllOnNoResults={false}
-                CardComponent={LocationCard}
-                locationResults={locationinbuit}
-                customCssClasses={{
-                  container:
-                    "result-list flex flex-col scroll-smooth  overflow-auto",
-                }}
-                // CardComponent={LocationCard}
-              />
-
-              {locationinbuit && locationinbuit.length <= 0 ? (
-                <div className="browse-dir">
-                  <a className="underline " href="/gb.html">
-                    Use the search above or{" "}
-                    <span className="font-second-main-font">
-                      {" "}
-                      browse our directory
-                    </span>
-                  </a>
-                </div>
-              ) : (
-                ""
-              )}
-              <div className="button-bx ">
-                <ViewMore
-                  className={
-                    "btn notHighlight lg:!w-[132%] !mb-2 button view-more "
-                  }
-                  idName={"view-more-button"}
-                  buttonLabel={"View More"}
-                />
-              </div>
+        <div className="locator-main bg-light-grey">
+          {allowlocation?.length > 0 ? (
+            <div className="for-allow">{allowlocation}</div>
+          ) : (
+            ""
+          )}
+          <div className="search-bx">
+            <div className="location-with-filter">
+              <h1 className="">{StaticData?.FindLocationtext}</h1>
             </div>
-          </PerfectScrollbar>
+
+            <div className="search-field">
+              <FilterSearch
+                ref={filterRef}
+                displaymsg={displaymsg}
+                setDisplaymsg={setDisplaymsg}
+                customCssClasses={{
+                  filterSearchContainer: "m-2 w-full",
+                  inputElement: "FilterSearchInput pr-[90px]",
+                  optionsContainer: "options",
+                }}
+                inputvalue={inputvalue}
+                setSearchInputValue={setInputValue}
+                params={params1}
+                searchOnSelect={true}
+                searchFields={[
+                  {
+                    entityType: "location",
+                    fieldApiName: "address.line1",
+                  },
+                  {
+                    entityType: "location",
+                    fieldApiName: "address.postalCode",
+                  },
+                  {
+                    entityType: "location",
+                    fieldApiName: "name",
+                  },
+                  {
+                    entityType: "location",
+                    fieldApiName: "address.city",
+                  },
+                ]}
+                handleInputValue={handleInputValue}
+                handleSetUserShareLocation={handleSetUserShareLocation}
+              />
+
+              <button
+                className="search-btn"
+                aria-label="Search bar icon"
+                id="search-location-button"
+                onClick={Findinput}
+              >
+                <span dangerouslySetInnerHTML={{ __html: search_icn }} />
+              </button>
+            </div>
+
+            <div className="fliter-sec">
+              <button
+                className="useMyLocation"
+                title="Search using your current location!"
+                id="useLocation"
+                onClick={onClick}
+              >
+                <span
+                  className="icon"
+                  dangerouslySetInnerHTML={{ __html: UseMylocationsvg }}
+                />
+
+                <span className="underline hover:no-underline">
+                  {" "}
+                  {StaticData.Usemylocation}
+                </span>
+              </button>
+
+              <ResultsCount
+                customCssClasses={{ container: "mx-2 my-0 text-dark-gray" }}
+              />
+            </div>
+          </div>
+          <div className="mobile-btns">
+            <div className="button-bx">
+              <a
+                className="btn listBtn"
+                href="javascript:void(0);"
+                onClick={() => {
+                  document.body.classList.remove("mapView");
+                }}
+              >
+                {" "}
+                List View
+              </a>
+              <a
+                className="btn mapBtn"
+                href="javascript:void(0);"
+                onClick={addClass}
+              >
+                {" "}
+                Map View
+              </a>
+            </div>
+          </div>
+          <div className=" map-section ">
+            <GoogleMaps
+              apiKey={googleApikey}
+              centerLatitude={centerLatitude}
+              centerLongitude={centerLongitude}
+              check={true}
+              defaultZoom={mapzoom}
+              showEmptyMap={true}
+            />
+          </div>
+
+          <div className="left-listing">
+            <PerfectScrollbar>
+              <div>
+                <VerticalResults
+                  displayAllOnNoResults={false}
+                  CardComponent={LocationCard}
+                  locationResults={locationinbuit}
+                  customCssClasses={{
+                    container:
+                      "result-list flex flex-col scroll-smooth  overflow-auto",
+                  }}
+                  // CardComponent={LocationCard}
+                />
+
+                {locationinbuit && locationinbuit.length <= 0 ? (
+                  <div className="browse-dir">
+                    <a className="underline " href="/gb.html">
+                      Use the search above or{" "}
+                      <span className="font-second-main-font">
+                        {" "}
+                        browse our directory
+                      </span>
+                    </a>
+                  </div>
+                ) : (
+                  ""
+                )}
+                <div className="button-bx ">
+                  <ViewMore
+                    className={
+                      "btn notHighlight lg:!w-[132%] !mb-2 button view-more "
+                    }
+                    idName={"view-more-button"}
+                    buttonLabel={"View More"}
+                  />
+                </div>
+              </div>
+            </PerfectScrollbar>
+          </div>
         </div>
       </div>
     </>

@@ -1,9 +1,4 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
-import Logo from "../../images/logo-header.svg";
-import Menu from "./Menu";
-import { CSSTransition } from "react-transition-group";
-import { humburgerIcon, logo } from "../../../sites-global/global";
 
 type props = {
   c_logos: any;

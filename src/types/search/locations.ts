@@ -247,6 +247,7 @@ export interface ComplexVideo {
 }
 
 export interface Location {
+  [x: string]: any;
   c_click_collect_availability: any;
   c_open_for_shopping: any;
   c_clickCollectAvaliability: any;
