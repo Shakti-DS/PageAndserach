@@ -126,7 +126,7 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
                     ) : (
                       <>
                         <div
-                          className=" flex open-now-string items-center"
+                          className="flex open-now-string items-center"
                           data-id={`main-shop-${result.rawData.id}`}
                         >
                           <OpenClose
