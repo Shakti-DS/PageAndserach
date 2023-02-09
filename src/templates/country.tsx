@@ -27,7 +27,7 @@ import {
 var currentUrl = "";
 export const config: TemplateConfig = {
   stream: {
-    $id: "matlan-country",
+    $id: "country",
     // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
     fields: [
@@ -55,7 +55,7 @@ export const config: TemplateConfig = {
     // Defines the scope of entities that qualify for this stream.
     filter: {
       entityTypes: ["ce_country"],
-      savedFilterIds: ["dm_matalan-stores-directory_address_countrycode"],
+      savedFilterIds: ["dm_stores-directory_address_countrycode"],
     },
     // The entity language profiles that documents will be generated for.
     localization: {
@@ -80,132 +80,122 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
 }): HeadConfig => {
   return {
-    title: `${
-      document.c_meta_title
-        ? document.c_meta_title
-        : `MGM Stores in ${document.name} | Find a Local Store`
-    }`,
+    title: `Country`,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
-    tags: [
-      {
-        type: "link",
-        attributes: {
-          rel: "shortcut icon",
-          href: favicon,
-        },
-      },
-      {
-        type: "meta",
-        attributes: {
-          name: "description",
-          content: `${
-            document.c_meta_description
-              ? document.c_meta_description
-              : `Use this page to find your nearest MGM store in ${document.name} and discover the location details you need to visit us today.`
-          }`,
-        },
-      },
+    // tags: [
+    //     {
+    //         type: "link",
+    //         attributes: {
+    //             rel: "shortcut icon",
+    //             href: favicon,
+    //         },
+    //     },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             name: "description",
+    //             content: `${document.c_meta_description
+    //                     ? document.c_meta_description
+    //                     : `Use this page to find your nearest MGM store in ${document.name} and discover the location details you need to visit us today.`
+    //                 }`,
+    //         },
+    //     },
 
-      {
-        type: "meta",
-        attributes: {
-          name: "author",
-          content: StaticData.Brandname,
-        },
-      },
-      {
-        type: "meta",
-        attributes: {
-          name: "keywords",
-          content: document.name,
-        },
-      },
-      {
-        type: "meta",
-        attributes: {
-          name: "robots",
-          content: "noindex, nofollow",
-        },
-      },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             name: "author",
+    //             content: StaticData.Brandname,
+    //         },
+    //     },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             name: "keywords",
+    //             content: document.name,
+    //         },
+    //     },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             name: "robots",
+    //             content: "noindex, nofollow",
+    //         },
+    //     },
 
-      {
-        type: "link",
-        attributes: {
-          rel: "canonical",
-          href: `${
-            stagingBaseurl
-              ? stagingBaseurl + document.slug + ".html"
-              : "/" + document.slug + ".html"
-          }`,
-        },
-      },
-      //   // /og tags
+    //     {
+    //         type: "link",
+    //         attributes: {
+    //             rel: "canonical",
+    //             href: `${stagingBaseurl
+    //                     ? stagingBaseurl + document.slug + ".html"
+    //                     : "/" + document.slug + ".html"
+    //                 }`,
+    //         },
+    //     },
+    //     //   // /og tags
 
-      {
-        type: "meta",
-        attributes: {
-          property: "og:url",
-          content: `/${
-            document.slug ? document.slug : `${document.name.toLowerCase()}`
-          }.html`,
-        },
-      },
-      {
-        type: "meta",
-        attributes: {
-          property: "og:description",
-          content: `${
-            document.c_meta_description
-              ? document.c_meta_description
-            : `Find Coffe Store in ${document.name}. We stock high-quality, robust products at competitive rates.`
-          }`,
-        },
-      },
-      {
-        type: "meta",
-        attributes: {
-          property: "og:title",
-          content: `${document.name}`,
-        },
-      },
-      {
-        type: "meta",
-        attributes: {
-          property: "og:image",
-          content: favicon,
-        },
-      },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             property: "og:url",
+    //             content: `/${document.slug ? document.slug : `${document.name.toLowerCase()}`
+    //                 }.html`,
+    //         },
+    //     },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             property: "og:description",
+    //             content: `${document.c_meta_description
+    //                     ? document.c_meta_description
+    //                     : `Find Coffe Store in ${document.name}. We stock high-quality, robust products at competitive rates.`
+    //                 }`,
+    //         },
+    //     },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             property: "og:title",
+    //             content: `${document.name}`,
+    //         },
+    //     },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             property: "og:image",
+    //             content: favicon,
+    //         },
+    //     },
 
-      {
-        type: "meta",
-        attributes: {
-          name: "twitter:card",
-          content: "summary",
-        },
-      },
-      {
-        type: "meta",
-        attributes: {
-          name: "twitter:url",
-          content: `/${
-            document.slug ? document.slug : `${document.name.toLowerCase()}`
-          }.html`,
-        },
-      },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             name: "twitter:card",
+    //             content: "summary",
+    //         },
+    //     },
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             name: "twitter:url",
+    //             content: `/${document.slug ? document.slug : `${document.name.toLowerCase()}`
+    //                 }.html`,
+    //         },
+    //     },
 
-      {
-        type: "meta",
-        attributes: {
-          name: "twitter:description",
-          content: `${
-            document.c_meta_description
-              ? document.c_meta_description
-            : `Find MGM Coffe Store in ${document.name}. We stock high-quality, robust products at competitive rates.`
-          }`,
-        },
-      },
-    ],
+    //     {
+    //         type: "meta",
+    //         attributes: {
+    //             name: "twitter:description",
+    //             content: `${document.c_meta_description
+    //                     ? document.c_meta_description
+    //                     : `Find MGM Coffe Store in ${document.name}. We stock high-quality, robust products at competitive rates.`
+    //                 }`,
+    //         },
+    //     },
+    // ],
   };
 };
 
@@ -277,11 +267,11 @@ const country: Template<TemplateRenderProps> = ({
       })
     : null;
 
-  let bannerimage = c_locatorBannerImage
-    ? c_locatorBannerImage.map((element: any) => {
-        return element.url;
-      })
-    : null;
+  // let bannerimage = c_locatorBannerImage
+  //     ? c_locatorBannerImage.map((element: any) => {
+  //         return element.url;
+  //     })
+  //     : null;
 
   return (
     <>
@@ -300,7 +290,7 @@ const country: Template<TemplateRenderProps> = ({
           <div className="container">
             <div className="sec-title">
               <h2 style={{ textAlign: "center" }}>
-                {StaticData.AllRegion} {regionNames.of(name)}{" "}
+                {StaticData.AllRegion} {regionNames.of(name)}
               </h2>
             </div>
 

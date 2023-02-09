@@ -33,6 +33,7 @@ import {
   AnalyticsProvider,
   AnalyticsScopeProvider,
 } from "@yext/pages/components";
+import BreadCrumbs from "../components/layouts/Breadcrumb";
 import { AnswerExperienceConfig } from "../config/answersHeadlessConfig";
 import Service from "../components/locationDetail/Services";
 import BannerSlide from "../components/locationDetail/BannerSlide";
@@ -254,10 +255,6 @@ const Location: Template<ExternalApiRenderData> = ({
     c_serviceList,
     c_slideImage,
   } = document;
-
-  // console.log('c_aboutimg', c_aboutimg)
-  // console.log('_site', _site)
-
   let templateData = { document: document, __meta: __meta };
   let hoursSchema = [];
   let breadcrumbScheme = [];
@@ -423,6 +420,11 @@ const Location: Template<ExternalApiRenderData> = ({
         {" "}
         <AnalyticsScopeProvider name={""}>
           <PageLayout global={_site}>
+            <BreadCrumbs
+              name={name}
+              address={address}
+              baseUrl={undefined}
+            ></BreadCrumbs>
             <BannerSlide imge={c_slideImage} />
             <div className="container">
               <div className="banner-text banner-dark-bg justify-center text-center">
@@ -477,15 +479,13 @@ const Location: Template<ExternalApiRenderData> = ({
             <div>
               <About img={c_aboutimg} btn={c_ctaButtons} dsc={c_discription} />
             </div>
-         
+
             <div>
               <Service serviceLis={c_serviceList} />
             </div>
             <div className="">
               <Faq faqs={c_faqs} />
             </div>
-
-            
 
             <div className="nearby-sec">
               <div className="container">
@@ -494,8 +494,8 @@ const Location: Template<ExternalApiRenderData> = ({
                 </div>
                 <div className="nearby-sec-inner">
                   {yextDisplayCoordinate ||
-                    cityCoordinate ||
-                    displayCoordinate ? (
+                  cityCoordinate ||
+                  displayCoordinate ? (
                     <Nearby externalApiData={externalApiData} />
                   ) : (
                     ""
